@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.itcast.crawler.autohome.mapper.CompanyMapper">
+	<insert id="saveCompany" parameterType="cn.itcast.crawler.autohome.pojo.Company">
+		INSERT INTO `company` (
+		  `company_id`,
+		  `company_name`,
+		  `industry_category`,
+		  `scale`,
+		  `introduction`,
+		  `tel`,
+		  `mail`,
+		  `job_mail`,
+		  `city_name`,
+		  `address`
+		) 
+		VALUES
+		  (
+		    #{company_id},
+		    #{company_name},
+		    #{industry_category},
+		    #{scale},
+		    #{introduction},
+		    #{tel},
+		    #{mail},
+		    #{job_mail},
+		    #{city_name},
+		    #{address}
+		  ) ;
+	</insert>
+	
+	<select id="getCompanyById" parameterType="int" resultType="cn.itcast.crawler.autohome.pojo.Company">
+		SELECT 
+		  `company_id`,
+		  `company_name`,
+		  `industry_category`,
+		  `scale`,
+		  `introduction`,
+		  `tel`,
+		  `mail`,
+		  `job_mail`,
+		  `city_name`,
+		  `address` 
+		FROM
+		  `company` 
+		WHERE
+		  company_id = #{company_id}
+	</select>
+</mapper>

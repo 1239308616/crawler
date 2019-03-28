@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.itcast.crawler.autohome.mapper.JobMapper">
+	<insert id="saveJobs" parameterType="java.util.ArrayList">
+		INSERT INTO `crawler`.`job` (
+		  `publish_id`,
+		  `job_name`,
+		  `about_major`,
+		  `job_number`,
+		  `city_name`,
+		  `degree_require`,
+		  `salary`,
+		  `create_time`,
+		  `cid`
+		) 
+		VALUES
+		<foreach collection="list" item="item" index="index" separator=",">
+		  (
+		    #{item.publish_id},
+		    #{item.job_name},
+		    #{item.about_major},
+		    #{item.job_number},
+		    #{item.city_name},
+		    #{item.degree_require},
+		    #{item.salary},
+		    #{item.create_time},
+		    #{item.cid}
+		  )
+		</foreach>
+	</insert>
+</mapper>
